@@ -1,0 +1,28 @@
+
+.custom-navbar {
+  background: linear-gradient(to right, #4CAF50, #2E7D32);
+  padding: 15px 20px;
+}
+
+.navbar-brand {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: white;
+}
+
+.navbar-nav .nav-link {
+  color: white !important;
+  margin-right: 15px;
+  font-size: 1.2rem;
+  transition: 0.3s;
+}
+
+.navbar-nav .nav-link:hover {
+  color: yellow !important;
+}
+
+.checkout-btn {
+  background-color: orange;
+  padding: 8px 15px;
+  border-radius: 5px;
+}

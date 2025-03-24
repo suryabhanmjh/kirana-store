@@ -1,0 +1,30 @@
+.home-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: url("/images/grocery-bg.jpg") no-repeat center center/cover;
+  }
+  
+  .home-content {
+    text-align: center;
+    color: white;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
+  }
+  
+  .shop-now-btn {
+    padding: 12px 20px;
+    font-size: 1.2rem;
+    background: orange;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .shop-now-btn:hover {
+    background: darkorange;
+  }
+  
