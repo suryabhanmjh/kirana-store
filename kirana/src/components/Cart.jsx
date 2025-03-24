@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "../Css/cart.css";
 
 const Cart = ({ cart, setCart }) => {
   // Quantity Update Function

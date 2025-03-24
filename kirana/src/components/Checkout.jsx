@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Payment from "./Payment"; // ✅ Payment Button Import Kiya
+import "../Css/checkout.css";
 
 const Checkout = () => {
   const [form, setForm] = useState({ name: "", address: "", phone: "" });

@@ -1,0 +1,19 @@
+form input {
+    border-radius: 5px;
+    padding: 10px;
+    border: 1px solid #ccc;
+  }
+  
+  .btn-success {
+    background-color: #28a745;
+    border: none;
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    transition: all 0.3s;
+  }
+  
+  .btn-success:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+  }
+  
