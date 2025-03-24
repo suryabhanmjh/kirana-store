@@ -1,0 +1,21 @@
+.custom-carousel img {
+  height: 500px;
+  object-fit: cover;
+}
+
+.custom-carousel .carousel-caption {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.custom-carousel h3 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: white;
+}
+
+.custom-carousel p {
+  font-size: 1.2rem;
+  color: white;
+}

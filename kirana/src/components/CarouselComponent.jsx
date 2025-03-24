@@ -1,12 +1,15 @@
 import React from "react";
 import { Carousel } from "react-bootstrap";
-import "../Css/carousel.css"; // CSS File Import Karo
+import "../Css/carousel.css"; 
+import image2 from "../Images/bestPrice.webp"
+import image1 from "../Images/freshGroceries.jpg"
+import image3 from "../Images/same day delivery.webp"
 
 const CarouselComponent = () => {
   return (
-    <Carousel className="custom-carousel">
+    <Carousel className="custom-carousel heihgt-10vh">
       <Carousel.Item>
-        <img className="d-block w-100" src="/images/grocery-1.jpg" alt="Fresh Groceries" />
+        <img className="d-block w-100" src={image1} alt="Fresh Groceries" />
         <Carousel.Caption>
           <h3>Fresh Groceries Delivered 🚛</h3>
           <p>Get fresh fruits, vegetables, and daily essentials at your doorstep.</p>
@@ -14,7 +17,7 @@ const CarouselComponent = () => {
       </Carousel.Item>
 
       <Carousel.Item>
-        <img className="d-block w-100" src="/images/grocery-2.jpg" alt="Best Prices" />
+        <img className="d-block w-100" src={image2} alt="Best Prices" />
         <Carousel.Caption>
           <h3>Best Prices Guaranteed 💰</h3>
           <p>We offer the best quality groceries at unbeatable prices.</p>
@@ -22,7 +25,7 @@ const CarouselComponent = () => {
       </Carousel.Item>
 
       <Carousel.Item>
-        <img className="d-block w-100" src="/images/grocery-3.jpg" alt="Fast Delivery" />
+        <img className="d-block w-100" src={image3} alt="Fast Delivery" />
         <Carousel.Caption>
           <h3>Super Fast Delivery 🚀</h3>
           <p>Get your groceries delivered within hours.</p>
