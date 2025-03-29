@@ -1,6 +1,8 @@
+/* navbar.css */
+
 .navbar {
   background-color: #007bff !important;
-  padding: 1rem;
+  padding: 10px 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: background-color 0.3s ease-in-out;
 }
@@ -22,6 +24,24 @@
   color: #ffdd57 !important;
 }
 
+.nav-link.active {
+  font-weight: bold;
+  color: #ffdd57 !important; /* Highlight active link */
+}
+
 .navbar:hover {
   background-color: #007bff !important;
+}
+
+.navbar-nav {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+}
+
+@media (max-width: 768px) {
+  .navbar-nav {
+    flex-direction: column;
+    text-align: center;
+  }
 }
