@@ -1,24 +1,24 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from 'react-redux';
+import { updateQuantity, removeFromCart } from '../store/cartSlice';
+import { toast } from 'react-toastify';
 import "../Css/cart.css";
 
-const Cart = ({ cart, setCart }) => {
-  // Quantity Update Function
-  const updateQuantity = (id, amount) => {
-    setCart(
-      cart.map((item) =>
-        item.id === id
-          ? { ...item, quantity: Math.max(1, item.quantity + amount) }
-          : item
-      )
-    );
+const Cart = () => {
+  const cart = useSelector(state => state.cart);
+  const dispatch = useDispatch();
+
+  const handleUpdateQuantity = (id, amount) => {
+    dispatch(updateQuantity({ id, amount }));
   };
 
-  // Total Price Calculation
-  const totalPrice = cart.reduce(
-    (total, item) => total + item.price * item.quantity,
-    0
-  );
+  const handleRemove = (id, name) => {
+    dispatch(removeFromCart(id));
+    toast.error(`${name} removed from cart`);
+  };
+
+  const totalPrice = cart.reduce((total, item) => total + item.price * item.quantity, 0);
 
   return (
     <div className="container mt-5">
@@ -29,6 +29,7 @@ const Cart = ({ cart, setCart }) => {
         <table className="table">
           <thead>
             <tr>
+              <th>Image</th>
               <th>Product</th>
               <th>Price</th>
               <th>Quantity</th>
@@ -39,20 +40,21 @@ const Cart = ({ cart, setCart }) => {
           <tbody>
             {cart.map((item) => (
               <tr key={item.id}>
+                <td>
+                  <img src={item.image} alt={item.name} className="cart-product-image" />
+                </td>
                 <td>{item.name}</td>
                 <td>₹{item.price}</td>
                 <td>
-                  <button onClick={() => updateQuantity(item.id, -1)}>-</button>
+                  <button onClick={() => handleUpdateQuantity(item.id, -1)}>-</button>
                   {item.quantity}
-                  <button onClick={() => updateQuantity(item.id, 1)}>+</button>
+                  <button onClick={() => handleUpdateQuantity(item.id, 1)}>+</button>
                 </td>
                 <td>₹{item.price * item.quantity}</td>
                 <td>
                   <button
                     className="btn btn-danger"
-                    onClick={() =>
-                      setCart(cart.filter((i) => i.id !== item.id))
-                    }
+                    onClick={() => handleRemove(item.id, item.name)}
                   >
                     Remove
                   </button>

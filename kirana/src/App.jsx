@@ -6,13 +6,17 @@ import Products from "./components/Products";
 import Cart from "./components/Cart";
 import Checkout from "./components/Checkout";
 import "./Css/app.css";
+import { Provider } from 'react-redux';
+import { store } from './store/store';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   const [cart, setCart] = useState([]);
 
   return (
-    <div className="app-container">
-      <>
+    <Provider store={store}>
+      <div className="app-container">
         <Router>
           <Navbar />
           <Routes>
@@ -21,9 +25,10 @@ function App() {
             <Route path="/cart" element={<Cart cart={cart} setCart={setCart} />} />
             <Route path="/checkout" element={<Checkout cart={cart} />} />
           </Routes>
+          <ToastContainer />
         </Router>
-      </>
-    </div>
+      </div>
+    </Provider>
   );
 }
 

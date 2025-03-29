@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import "../Css/product.css";
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../store/cartSlice';
+import { toast } from 'react-toastify';
 
 const productsData = [
   { id: 1, name: "Apple", price: 120, category: "Fruits", image: "src/images/Apple.webp" },
@@ -10,8 +13,9 @@ const productsData = [
   { id: 6, name: "Wheat", price: 55, category: "Grains", image: "src/images/Wheat.webp" },
 ];
 
-const Products = ({ cart, setCart }) => {
+const Products = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
+  const dispatch = useDispatch();
 
   // Filter products based on selected category
   const filteredProducts =
@@ -22,21 +26,9 @@ const Products = ({ cart, setCart }) => {
   // Get unique categories
   const categories = ["All", ...new Set(productsData.map((p) => p.category))];
 
-  // ✅ **Fix: Properly Adding Product to Cart**
-  const addToCart = (product) => {
-    const existingProduct = cart.find((item) => item.id === product.id);
-
-    if (existingProduct) {
-      // अगर product पहले से है तो quantity बढ़ाएं
-      setCart(
-        cart.map((item) =>
-          item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
-        )
-      );
-    } else {
-      // नया product cart में add करें
-      setCart([...cart, { ...product, quantity: 1 }]);
-    }
+  const handleAddToCart = (product) => {
+    dispatch(addToCart(product));
+    toast.success(`${product.name} added to cart!`);
   };
 
   return (
@@ -63,7 +55,7 @@ const Products = ({ cart, setCart }) => {
             <img src={product.image} alt={product.name} className="product-image" />
             <h3>{product.name}</h3>
             <p>Price: ₹{product.price}</p>
-            <button onClick={() => addToCart(product)}>Add to Cart</button>
+            <button onClick={() => handleAddToCart(product)}>Add to Cart</button>
           </div>
         ))}
       </div>
