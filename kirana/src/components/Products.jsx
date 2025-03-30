@@ -13,6 +13,13 @@ const productsData = [
   { id: 6, name: "Wheat", price: 55, category: "Grains", image: "src/images/Wheat.webp" },
 ];
 
+const categoryIcons = {
+  All: "🏪",
+  Fruits: "🍎",
+  Dairy: "🥛",
+  Grains: "🌾"
+};
+
 const Products = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const dispatch = useDispatch();
@@ -33,19 +40,22 @@ const Products = () => {
 
   return (
     <div className="products-container">
-      <h2>🛍️ Our Products</h2>
-
-      {/* Category Buttons */}
-      <div className="category-buttons">
-        {categories.map((category) => (
-          <button
-            key={category}
-            className={category === selectedCategory ? "active" : ""}
-            onClick={() => setSelectedCategory(category)}
-          >
-            {category}
-          </button>
-        ))}
+      <h2 className="products-title">Our Products</h2>
+      
+      <div className="category-section">
+        <h3 className="category-title">Categories</h3>
+        <div className="category-buttons">
+          {categories.map((category) => (
+            <button
+              key={category}
+              className={`category-btn ${category === selectedCategory ? "active" : ""}`}
+              onClick={() => setSelectedCategory(category)}
+            >
+              <span className="category-icon">{categoryIcons[category]}</span>
+              <span className="category-name">{category}</span>
+            </button>
+          ))}
+        </div>
       </div>
 
       {/* Product Grid */}
