@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import Payment from "./Payment"; // ✅ Payment Button Import Kiya
+import Payment from "./Payment";
+import { useSelector } from 'react-redux';
 import "../Css/checkout.css";
 
 const Checkout = () => {
+  const cart = useSelector(state => state.cart);
   const [form, setForm] = useState({ name: "", address: "", phone: "" });
 
-  // Form Data Handle
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
@@ -15,32 +16,52 @@ const Checkout = () => {
     alert("Order Placed Successfully!");
   };
 
+  const totalAmount = cart.reduce((total, item) => total + item.price * item.quantity, 0);
+
   return (
-    <>
-    <div className="container mt-5">
-      <h2>📝 Checkout</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="mb-3">
-          <label>Name</label>
-          <input type="text" name="name" className="form-control" onChange={handleChange} required />
-        </div>
-        <div className="mb-3">
-          <label>Address</label>
-          <input type="text" name="address" className="form-control" onChange={handleChange} required />
-        </div>
-        <div className="mb-3">
-          <label>Phone</label>
-          <input type="text" name="phone" className="form-control" onChange={handleChange} required />
+    <div className="checkout-container">
+      <div className="checkout-form">
+        <h2>📝 Checkout</h2>
+        <div className="order-summary">
+          <h3>Order Summary</h3>
+          <div className="order-items">
+            {cart.map(item => (
+              <div key={item.id} className="order-item">
+                <img src={item.image} alt={item.name} />
+                <div className="item-details">
+                  <h4>{item.name}</h4>
+                  <p>Quantity: {item.quantity}</p>
+                  <p>Price: ₹{item.price * item.quantity}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="total-amount">
+            <h3>Total Amount: ₹{totalAmount}</h3>
+          </div>
         </div>
 
-        {/* ✅ Order Button */}
-        <button type="submit" className="btn btn-primary">Place Order</button>
+        <form onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label>Full Name</label>
+            <input type="text" name="name" className="form-control" onChange={handleChange} required />
+          </div>
+          <div className="form-group">
+            <label>Delivery Address</label>
+            <textarea name="address" className="form-control" onChange={handleChange} required />
+          </div>
+          <div className="form-group">
+            <label>Phone Number</label>
+            <input type="tel" name="phone" className="form-control" onChange={handleChange} required />
+          </div>
 
-        {/* ✅ Payment Button */}
-        <Payment />
-      </form>
+          <div className="checkout-buttons">
+            <button type="submit" className="place-order-btn">Place Order</button>
+            <Payment />
+          </div>
+        </form>
+      </div>
     </div>
-    </>
   );
 };
 
