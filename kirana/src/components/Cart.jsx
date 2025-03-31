@@ -46,9 +46,9 @@ const Cart = () => {
                 <td>{item.name}</td>
                 <td>₹{item.price}</td>
                 <td>
-                  <button onClick={() => handleUpdateQuantity(item.id, -1)}>-</button>
+                  <button className="quantity-btn" onClick={() => handleUpdateQuantity(item.id, -1)}>-</button>
                   {item.quantity}
-                  <button onClick={() => handleUpdateQuantity(item.id, 1)}>+</button>
+                  <button className="quantity-btn" onClick={() => handleUpdateQuantity(item.id, 1)}>+</button>
                 </td>
                 <td>₹{item.price * item.quantity}</td>
                 <td>

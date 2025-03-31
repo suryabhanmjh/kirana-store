@@ -23,3 +23,25 @@
     object-fit: cover;
     border-radius: 4px;
   }
+
+  .quantity-btn {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    margin: 0 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  
+  .quantity-btn:hover {
+    background: #007bff;
+    color: white;
+    border-color: #007bff;
+    transform: scale(1.1);
+  }
