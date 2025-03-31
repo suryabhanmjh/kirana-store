@@ -260,7 +260,18 @@ textarea.form-control {
 
 .payment-option.active {
   border-color: #00b09b;
-  background: linear-gradient(135deg, #00b09b11, #96c93d11);
+  background: linear-gradient(135deg, #00b09b22, #96c93d22);
+  transform: scale(1.02);
+  box-shadow: 0 4px 12px rgba(0, 176, 155, 0.2);
+}
+
+.payment-option.active::before {
+  opacity: 1;
+}
+
+.payment-option.active span:not(.icon) {
+  color: #00b09b;
+  font-weight: 600;
 }
 
 .payment-option .icon {
@@ -297,6 +308,87 @@ textarea.form-control {
 
 .proceed-payment-btn:active {
   transform: translateY(-1px);
+}
+
+.payment-form {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: #f8f9fa;
+  border-radius: 12px;
+  border: 1px solid #e9ecef;
+}
+
+.payment-note {
+  color: #666;
+  font-size: 0.9rem;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.upi-form input {
+  text-transform: lowercase;
+}
+
+.card-extra-details {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1rem;
+}
+
+.card-form input, .netbanking-form select {
+  font-size: 1rem;
+  letter-spacing: 1px;
+}
+
+.card-form input::placeholder {
+  color: #aaa;
+}
+
+.netbanking-form select {
+  height: 48px;
+  background-color: white;
+}
+
+.netbanking-form select option {
+  padding: 10px;
+}
+
+.cod-form {
+  text-align: center;
+  padding: 2rem;
+}
+
+.cod-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.cod-info .icon {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+
+.cod-info h4 {
+  font-size: 1.4rem;
+  color: #2c3e50;
+  margin: 0;
+}
+
+.cod-points {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+  text-align: left;
+  width: 100%;
+  max-width: 300px;
+}
+
+.cod-points li {
+  padding: 0.5rem 0;
+  color: #666;
+  font-size: 1rem;
 }
 
 @media (max-width: 768px) {
@@ -345,5 +437,107 @@ textarea.form-control {
   .proceed-payment-btn {
     padding: 1.2rem;
     font-size: 1.1rem;
+  }
+
+  .payment-section {
+    padding: 1rem;
+  }
+
+  .payment-section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+  }
+
+  .payment-amount {
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .payment-amount .amount {
+    font-size: 2.5rem;
+  }
+
+  .payment-methods {
+    padding: 1.5rem;
+  }
+
+  .payment-options {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .payment-option {
+    padding: 1.2rem;
+    gap: 0.8rem;
+  }
+
+  .payment-option .icon {
+    font-size: 1.5rem;
+  }
+
+  .proceed-payment-btn {
+    padding: 1.2rem;
+    font-size: 1.1rem;
+    margin-top: 1.5rem;
+  }
+
+  .payment-form {
+    padding: 1rem;
+    margin: 1.5rem 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .payment-section {
+    padding: 0.5rem;
+  }
+
+  .payment-section h2 {
+    font-size: 1.5rem;
+  }
+
+  .payment-amount {
+    padding: 1rem;
+  }
+
+  .payment-amount .amount {
+    font-size: 2rem;
+  }
+
+  .payment-methods {
+    padding: 1rem;
+  }
+
+  .payment-option {
+    padding: 1rem;
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5rem;
+  }
+
+  .card-extra-details {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+  
+  .card-form .form-group, 
+  .netbanking-form .form-group {
+    margin-bottom: 1rem;
+  }
+
+  .cod-form {
+    padding: 1rem;
+  }
+  
+  .cod-info .icon {
+    font-size: 2.5rem;
+  }
+  
+  .cod-info h4 {
+    font-size: 1.2rem;
+  }
+  
+  .cod-points li {
+    font-size: 0.9rem;
   }
 }
