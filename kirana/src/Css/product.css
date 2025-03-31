@@ -1,8 +1,8 @@
 .products-container {
   padding: 20px;
   text-align: center;
-  max-width: 1200px;
-  margin: 0 auto;
+  width: 100%;  /* Changed from max-width to width */
+  margin: 0;    /* Remove auto margins */
 }
 
 .products-title {
@@ -90,8 +90,10 @@
 /* Product Grid */
 .products-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 15px;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 0 20px;
+  width: 100%;
 }
 
 /* Product Card */
@@ -129,4 +131,16 @@ button {
 
 button:hover {
   background: darkorange;
+}
+
+@media (max-width: 768px) {
+  .products-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 15px;
+    padding: 0 10px;
+  }
+  
+  .product-card {
+    height: 280px;
+  }
 }
