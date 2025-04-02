@@ -36,7 +36,36 @@
 .navbar-nav {
   display: flex;
   flex-direction: row;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+  position: relative;
+}
+
+.nav-left {
+  display: flex;
   gap: 15px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.nav-right {
+  margin-left: auto;
+  display: flex;
+  gap: 15px;
+}
+
+.auth-link {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 8px 20px !important;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+}
+
+.auth-link:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
 }
 
 @media (max-width: 768px) {
@@ -75,5 +104,23 @@
 
   .nav-item:last-child {
     border-bottom: none;
+  }
+
+  .nav-left, .nav-right {
+    flex-direction: column;
+    width: 100%;
+    gap: 0;
+  }
+
+  .nav-left {
+    position: static;
+    transform: none;
+    margin: 0;
+    width: 100%;
+  }
+
+  .auth-link {
+    margin-top: 10px;
+    text-align: center;
   }
 }

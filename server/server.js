@@ -3,6 +3,7 @@ const cors = require('cors');
 const path = require('path');
 const connectDB = require('./config/db');
 const productRoutes = require('./routes/ProductRoute');
+const userRoutes = require('./routes/UserRoute');
 
 const app = express();
 
@@ -18,6 +19,7 @@ connectDB();
 
 // Routes
 app.use('/api/products', productRoutes);
+app.use('/api/users', userRoutes);
 
 // Error handling middleware
 app.use((err, req, res, next) => {

@@ -55,29 +55,29 @@ const Admin = () => {
     }
 
     try {
-      let response;
-      if (editingProduct) {
-        response = await fetch(`http://localhost:5000/api/products/${editingProduct._id}`, {
-          method: 'PUT',
-          body: data
-        });
-      } else {
-        response = await fetch('http://localhost:5000/api/products', {
-          method: 'POST',
-          body: data
-        });
-      }
+      const url = editingProduct 
+        ? `http://localhost:5000/api/products/${editingProduct._id}`
+        : 'http://localhost:5000/api/products';
+
+      const response = await fetch(url, {
+        method: editingProduct ? 'PUT' : 'POST',
+        body: data
+      });
 
       if (response.ok) {
-        setMessage({ type: 'success', text: `Product ${editingProduct ? 'updated' : 'added'} successfully!` });
+        setMessage({ 
+          type: 'success', 
+          text: `Product ${editingProduct ? 'updated' : 'added'} successfully!` 
+        });
         resetForm();
         fetchProducts();
         setShowModal(false);
       } else {
-        setMessage({ type: 'danger', text: `Failed to ${editingProduct ? 'update' : 'add'} product` });
+        const errorData = await response.json();
+        throw new Error(errorData.error || `Failed to ${editingProduct ? 'update' : 'add'} product`);
       }
     } catch (error) {
-      setMessage({ type: 'danger', text: 'Error: ' + error.message });
+      setMessage({ type: 'danger', text: error.message });
     }
   };
 

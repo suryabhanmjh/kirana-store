@@ -33,16 +33,23 @@ const Navbar = () => {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className={`collapse navbar-collapse ${isOpen ? 'show' : ''}`} id="navbarNav">
-          <ul className="navbar-nav ms-auto">
-            <li className="nav-item">
-              <Link className="nav-link" to="/products" onClick={closeMenu}>🛒 Products</Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/cart" onClick={closeMenu}>🛍️ Cart</Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link checkout-btn" to="/checkout" onClick={closeMenu}>Checkout</Link>
-            </li>
+          <ul className="navbar-nav">
+            <div className="nav-left">
+              <li className="nav-item">
+                <Link className="nav-link" to="/products" onClick={closeMenu}>🛒 Products</Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/cart" onClick={closeMenu}>🛍️ Cart</Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/checkout" onClick={closeMenu}>Checkout</Link>
+              </li>
+            </div>
+            <div className="nav-right">
+              <li className="nav-item">
+                <Link className="nav-link auth-link" to="/auth" onClick={closeMenu}>👤 Login/Signup</Link>
+              </li>
+            </div>
           </ul>
         </div>
       </div>

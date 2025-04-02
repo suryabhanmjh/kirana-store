@@ -1,0 +1,114 @@
+.auth-container {
+  background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+  min-height: 100vh;
+  padding: 2rem 0;
+}
+
+.auth-form {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 15px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.auth-title {
+  color: #2c3e50;
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+
+.nav-tabs {
+  border: none;
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1rem;
+  border-radius: 50px;
+}
+
+.nav-tabs .nav-item {
+  flex: 0 0 auto;
+  width: auto;
+}
+
+.nav-tabs .nav-link {
+  border: none;
+  padding: 1rem 3rem;
+  border-radius: 25px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #6a11cb;
+  background: rgb(150, 165, 207);
+  transition: all 0.3s ease;
+  min-width: 150px;
+  text-align: center;
+}
+
+.nav-tabs .nav-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(106, 17, 203, 0.2);
+}
+
+.nav-tabs .nav-link.active {
+  background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(106, 17, 203, 0.3);
+}
+
+.tab-content {
+  padding: 2rem;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.form-control {
+  padding: 0.8rem;
+  border-radius: 8px;
+  border: 2px solid #9791eb;
+  transition: all 0.3s ease;
+}
+
+.form-control:focus {
+  border-color: #2575fc;
+  box-shadow: 0 0 0 3px rgba(37, 117, 252, 0.2);
+}
+
+.form-label {
+  color: #2c3e50;
+  font-weight: 500;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+  border: none;
+  padding: 0.8rem;
+  font-weight: 600;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(37, 117, 252, 0.3);
+}
+
+.alert {
+  border-radius: 8px;
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

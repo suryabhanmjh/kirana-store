@@ -71,17 +71,17 @@ const Products = () => {
             <img src={product.image} alt={product.name} className="product-image" />
             <h3>{product.name}</h3>
             <p>Price: ₹{product.price}</p>
-            <p className={`stock-status ${product.stock === 0 ? 'out-of-stock' : product.stock < 5 ? 'low-stock' : ''}`}>
-              {product.stock === 0 ? 'Out of Stock' : 
+            <p className={`stock-status ${product.stock <= 0 ? 'out-of-stock' : product.stock < 5 ? 'low-stock' : ''}`}>
+              {product.stock <= 0 ? 'Out of Stock' : 
                product.stock < 5 ? `Low Stock: ${product.stock} left` : 
                `In Stock: ${product.stock}`}
             </p>
             <button 
               onClick={() => handleAddToCart(product)} 
-              disabled={product.stock === 0}
-              className={product.stock === 0 ? 'disabled' : ''}
+              disabled={product.stock <= 0}
+              className={product.stock <= 0 ? 'disabled' : ''}
             >
-              {product.stock === 0 ? 'Out of Stock' : 'Add to Cart'}
+              {product.stock <= 0 ? 'Out of Stock' : 'Add to Cart'}
             </button>
           </div>
         ))}
