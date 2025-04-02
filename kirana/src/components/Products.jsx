@@ -1,17 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../Css/product.css";
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../store/cartSlice';
 import { toast } from 'react-toastify';
-
-const productsData = [
-  { id: 1, name: "Apple", price: 120, category: "Fruits", image: "src/images/Apple.webp" },
-  { id: 2, name: "Banana", price: 40, category: "Fruits", image: "src/images/banana.webp" },
-  { id: 3, name: "Cheese", price: 250, category: "Dairy", image: "src/images/Cheese.webp" },
-  { id: 4, name: "Milk", price: 50, category: "Dairy", image: "src/images/Milk.webp" },
-  { id: 5, name: "Rice", price: 60, category: "Grains", image: "src/images/Rice.webp" },
-  { id: 6, name: "Wheat", price: 55, category: "Grains", image: "src/images/Wheat.webp" },
-];
 
 const categoryIcons = {
   All: "🏪",
@@ -22,16 +13,31 @@ const categoryIcons = {
 
 const Products = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
+  const [products, setProducts] = useState([]);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+
+  const fetchProducts = async () => {
+    try {
+      const response = await fetch('http://localhost:5000/api/products');
+      const data = await response.json();
+      setProducts(data);
+    } catch (error) {
+      console.error('Error fetching products:', error);
+    }
+  };
 
   // Filter products based on selected category
   const filteredProducts =
     selectedCategory === "All"
-      ? productsData
-      : productsData.filter((p) => p.category === selectedCategory);
+      ? products
+      : products.filter((p) => p.category === selectedCategory);
 
-  // Get unique categories
-  const categories = ["All", ...new Set(productsData.map((p) => p.category))];
+  // Get unique categories from products
+  const categories = ["All", ...new Set(products.map((p) => p.category))];
 
   const handleAddToCart = (product) => {
     dispatch(addToCart(product));
@@ -65,7 +71,18 @@ const Products = () => {
             <img src={product.image} alt={product.name} className="product-image" />
             <h3>{product.name}</h3>
             <p>Price: ₹{product.price}</p>
-            <button onClick={() => handleAddToCart(product)}>Add to Cart</button>
+            <p className={`stock-status ${product.stock === 0 ? 'out-of-stock' : product.stock < 5 ? 'low-stock' : ''}`}>
+              {product.stock === 0 ? 'Out of Stock' : 
+               product.stock < 5 ? `Low Stock: ${product.stock} left` : 
+               `In Stock: ${product.stock}`}
+            </p>
+            <button 
+              onClick={() => handleAddToCart(product)} 
+              disabled={product.stock === 0}
+              className={product.stock === 0 ? 'disabled' : ''}
+            >
+              {product.stock === 0 ? 'Out of Stock' : 'Add to Cart'}
+            </button>
           </div>
         ))}
       </div>

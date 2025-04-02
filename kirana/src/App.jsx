@@ -5,6 +5,7 @@ import Home from "./components/Home";
 import Products from "./components/Products";
 import Cart from "./components/Cart";
 import Checkout from "./components/Checkout";
+import Admin from "./components/Admin";
 import "./Css/app.css";
 import { Provider } from 'react-redux';
 import { store } from './store/store';
@@ -24,6 +25,7 @@ function App() {
             <Route path="/products" element={<Products setCart={setCart} />} />
             <Route path="/cart" element={<Cart cart={cart} setCart={setCart} />} />
             <Route path="/checkout" element={<Checkout cart={cart} />} />
+            <Route path="/admin" element={<Admin />} />
           </Routes>
           <ToastContainer />
         </Router>

@@ -133,6 +133,16 @@ button:hover {
   background: darkorange;
 }
 
+button.disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+button.disabled:hover {
+  background-color: #ccc;
+  transform: none;
+}
+
 @media (max-width: 768px) {
   .products-grid {
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
@@ -143,4 +153,21 @@ button:hover {
   .product-card {
     height: 280px;
   }
+}
+
+.stock-status {
+  font-weight: 500;
+  margin: 5px 0;
+  padding: 5px 10px;
+  border-radius: 4px;
+}
+
+.out-of-stock {
+  color: #dc3545;
+  background-color: rgba(220, 53, 69, 0.1);
+}
+
+.low-stock {
+  color: #ffc107;
+  background-color: rgba(255, 193, 7, 0.1);
 }
